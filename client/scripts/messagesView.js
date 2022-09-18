@@ -1,21 +1,28 @@
-// MessagesView is an object which controls the DOM elements
-// responsible for displaying messages.
-
 var MessagesView = {
 
   $chats: $('#chats'),
 
   initialize: function() {
-    // TODO: Perform any work which needs to be done
-    // when this view loads.
+
   },
 
-  render: function() {
-    // TODO: Render _all_ the messages.
+  render: function(messages) {
+    console.log('Messages from ', messages);
+    // let messages = data;
+    for (var key in messages) {
+      var currentObject = messages[key];
+      this.renderMessage(currentObject);
+    }
   },
 
   renderMessage: function(message) {
-    // TODO: Render a single message.
+
+    let mess = MessageView.render({
+      username: message.username,
+      text: message.text
+    });
+
+    $(mess).appendTo(MessagesView.$chats);
   },
 
   handleClick: function(event) {
